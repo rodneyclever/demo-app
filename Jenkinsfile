@@ -9,18 +9,18 @@ pipeline {
         }
         stage('Install') {
             steps {
-                sh 'python3 -m venv venv'
-                sh '. venv/bin/activate && pip install -r requirements.txt'
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\activate && pip install -r requirements.txt'
             }
         }
         stage('Lint') {
             steps {
-                sh '. venv/bin/activate && flake8 app.py --max-line-length=100'
+                bat 'venv\\Scripts\\activate && flake8 app.py --max-line-length=100'
             }
         }
         stage('Test') {
             steps {
-                sh '. venv/bin/activate && pytest -v'
+                bat 'venv\\Scripts\\activate && pytest -v'
             }
         }
     }
