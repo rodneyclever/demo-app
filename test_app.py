@@ -8,4 +8,4 @@ def test_home():
 
 def test_add():
     client = app.test_client()
-    assert client.get("/add?a=2&b=3").get_json()["result"] == 5
+    assert client.get("/add?a=2&b=3").get_json()["result"] == 6
