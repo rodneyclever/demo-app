@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PY = 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -9,7 +13,7 @@ pipeline {
         }
         stage('Install') {
             steps {
-                bat 'python -m venv venv'
+                bat '"%PY%" -m venv venv'
                 bat 'venv\\Scripts\\activate && pip install -r requirements.txt'
             }
         }
